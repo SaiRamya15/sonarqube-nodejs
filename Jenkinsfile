@@ -6,7 +6,7 @@ pipeline {
     environment {
         GIT_CREDENTIALS_ID = "d24121e7-c5e6-413f-a8c4-890f7eeee1fc"
         GIT_REPO = 'https://github.com/SaiRamya15/sonarqube-nodejs.git'
-        SONAR_SCANNER_HOME = tool 'sonarqube' // Matches the name in Jenkins
+        // SONAR_SCANNER_HOME = tool 'sonarqube' 
         GIT_BRANCH = 'main'
     }
 
@@ -28,8 +28,11 @@ pipeline {
         
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonarQube') {
-                    sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner"
+                script {
+                    def scannerHome = tool 'SonarQubeScanner'
+                    withSonarQubeEnv('sonarQube') {
+                        bat "${scannerHome}/bin/sonar-scanner"
+                    }
                 }
             }
         }
