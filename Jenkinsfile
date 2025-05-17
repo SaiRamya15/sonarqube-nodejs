@@ -5,7 +5,7 @@ pipeline {
   }
     environment {
         GIT_CREDENTIALS_ID = "d24121e7-c5e6-413f-a8c4-890f7eeee1fc"
-        GIT_REPO = 'https://github.com/SaiRamya15/nodejspipeline.git'
+        GIT_REPO = 'https://github.com/SaiRamya15/sonarqube-nodejs.git'
         SONAR_SCANNER_HOME = tool 'sonarqube' // Matches the name in Jenkins
         GIT_BRANCH = 'main'
     }
